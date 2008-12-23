@@ -11,4 +11,3 @@ println "Manifest ${warManifest}"
 assert warManifest.containsKey("web.xml")
 
 return true
-

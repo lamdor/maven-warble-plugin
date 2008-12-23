@@ -1,10 +1,12 @@
 require 'warbler'
 
 war_name = $maven_project.artifact_id + "-" + $maven_project.version
+necessary_jars = $warble_plugin_artifacts.map {|art| art.file.absolute_path }
 
 Warbler::Task.new do |t|
-    t.config.autodeploy_dir = "tmp/"
-    t.config.war_name = war_name
+  t.config.autodeploy_dir = "tmp/"
+  t.config.war_name = war_name
+  t.config.java_libs.push *necessary_jars
 end
 
 Rake.application["war"].invoke

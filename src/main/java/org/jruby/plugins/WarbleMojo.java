@@ -6,12 +6,11 @@ import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.project.MavenProject;
 import org.apache.maven.artifact.handler.manager.ArtifactHandlerManager;
 import org.jruby.Ruby;
-import org.jruby.RubyRuntimeAdapter;
 import org.jruby.runtime.GlobalVariable;
 import org.jruby.javasupport.JavaEmbedUtils;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
+import java.util.Map;
 
 /**
  * Uses Warble to change your Rails/Rack application into a WAR
@@ -37,30 +36,39 @@ public class WarbleMojo extends AbstractMojo {
      */
     private ArtifactHandlerManager artifactHandlerManager;
 
-
-    private Ruby ruby;
+    /**
+     * @parameter expression="${plugin.artifactMap}"
+     * @required
+     * @readonly
+     *
+     */
+    protected Map pluginArtifactMap;
 
 
     public void execute() throws MojoExecutionException, MojoFailureException {
-        List<String> loadPaths = new ArrayList<String>();
-        loadPaths.add("warbler/lib");
-        loadPaths.add("rake/lib");
-        ruby = JavaEmbedUtils.initialize(loadPaths);
+        Ruby ruby = JavaEmbedUtils.initialize(Arrays.asList("warbler/lib", "rake/lib"));
 
-        setupMavenProjectGlobalVariable();
-        setupArtifactHandlerGlobalVariable();
+        setupMavenProjectGlobalVariable(ruby);
+        setupArtifactHandlerGlobalVariable(ruby);
+        setupPluginArtifacts(ruby);
 
         JavaEmbedUtils.newRuntimeAdapter().eval(ruby, "load 'warbler-maven.rb'");
     }
 
-    private void setupArtifactHandlerGlobalVariable() {
+    private void setupArtifactHandlerGlobalVariable(Ruby ruby) {
         GlobalVariable artifactHandlerManagerVar =
                 new GlobalVariable(ruby, "$artifact_handler",
                         JavaEmbedUtils.javaToRuby(ruby, artifactHandlerManager.getArtifactHandler("warble")));
         ruby.defineVariable(artifactHandlerManagerVar);
     }
 
-    private void setupMavenProjectGlobalVariable() {
+    private void setupPluginArtifacts(Ruby ruby) {
+        GlobalVariable pluginArtifactVar =new GlobalVariable(ruby, "$warble_plugin_artifacts",
+                JavaEmbedUtils.javaToRuby(ruby, pluginArtifactMap.values()));
+        ruby.defineVariable(pluginArtifactVar);
+    }
+
+    private void setupMavenProjectGlobalVariable(Ruby ruby) {
         GlobalVariable mavenProject =
                 new GlobalVariable(ruby, "$maven_project", JavaEmbedUtils.javaToRuby(ruby, project));
         ruby.defineVariable(mavenProject);

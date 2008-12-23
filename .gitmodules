@@ -1,0 +1,3 @@
+[submodule "src/main/jruby/warbler"]
+	path = src/main/jruby/warbler
+	url = git://github.com/nicksieger/warbler.git

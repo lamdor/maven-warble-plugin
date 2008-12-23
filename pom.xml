@@ -80,6 +80,7 @@
                     </goals>
                     <localRepositoryPath>${project.build.directory}/it-repo</localRepositoryPath>
                     <postBuildHookScript>verify.groovy</postBuildHookScript>
+                    <addTestClassPath>true</addTestClassPath>
                 </configuration>
                 <executions>
                     <execution>

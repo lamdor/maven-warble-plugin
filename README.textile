@@ -1,6 +1,6 @@
 h2. Maven Warble Packaging
 
-* THIS IS VERY EXPERIMENTAL *
+*THIS IS VERY EXPERIMENTAL AND IS IN A EARLY STAGE OF DEVELOPEMENT*
 
 h3. DESCRIPTION
 
@@ -9,10 +9,16 @@ This is a Maven packaging type which allows for a warble packaging type. This wi
 h3. USAGE
 
 In your pom.xml change packaging
+
+<pre>
 ..
     <packaging>warble</packaging>
 ...
+</pre>
+
 and add
+
+<pre>
 ...
     <packaging>warble</packaging>
 ...
@@ -26,6 +32,7 @@ and add
         </plugins>
     </build>
 ...
+</pre>
 
 See BACKLOG for upcoming features
 

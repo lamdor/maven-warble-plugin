@@ -1,15 +1,25 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-  <groupId>integration.test</groupId>
-  <artifactId>simple-rails</artifactId>
+    <groupId>integration.test</groupId>
+    <artifactId>simple-rails</artifactId>
 
-  <packaging>warble</packaging>
+    <packaging>warble</packaging>
 
-  <version>1.0-SNAPSHOT</version>
+    <version>1.0-SNAPSHOT</version>
 
-  <name>Simple Rails Application</name>
-  <url>http://maven.apache.org</url>
+    <name>Simple Rails Application</name>
+    <url>http://maven.apache.org</url>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.jruby.plugins</groupId>
+                <artifactId>maven-warble-plugin</artifactId>
+                <extensions>true</extensions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

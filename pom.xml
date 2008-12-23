@@ -76,7 +76,7 @@
                     </pomIncludes>
                     <goals>
                         <goal>clean</goal>
-                        <goal>package</goal>
+                        <goal>install</goal>
                     </goals>
                     <localRepositoryPath>${project.build.directory}/it-repo</localRepositoryPath>
                     <postBuildHookScript>verify.groovy</postBuildHookScript>

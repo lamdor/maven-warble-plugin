@@ -1,3 +1,6 @@
 [submodule "src/main/jruby/warbler"]
 	path = src/main/jruby/warbler
 	url = git://github.com/nicksieger/warbler.git
+[submodule "src/main/jruby/rake"]
+	path = src/main/jruby/rake
+	url = git://github.com/jimweirich/rake.git

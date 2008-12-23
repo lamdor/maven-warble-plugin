@@ -40,6 +40,7 @@
                         <goal>package</goal>
                     </goals>
                     <localRepositoryPath>${project.build.directory}/it-repo</localRepositoryPath>
+                    <postBuildHookScript>verify.groovy</postBuildHookScript>
                 </configuration>
                 <executions>
                     <execution>

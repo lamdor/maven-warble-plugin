@@ -15,4 +15,5 @@ public class WarbleMojo extends AbstractMojo {
     public void execute() throws MojoExecutionException, MojoFailureException {
         getLog().info("I was running!!");
     }
+
 }

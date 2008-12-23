@@ -1,0 +1,41 @@
+h2. Maven Warble Packaging
+
+* THIS IS VERY EXPERIMENTAL *
+
+h3. DESCRIPTION
+
+This is a Maven packaging type which allows for a warble packaging type. This will create a war artifact following the same rules as the warble gem.
+
+h3. USAGE
+
+In your pom.xml change packaging
+..
+    <packaging>warble</packaging>
+...
+and add
+...
+    <packaging>warble</packaging>
+...
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.jruby.plugins</groupId>
+                <artifactId>maven-warble-plugin</artifactId>
+                <extensions>true</extensions>
+            </plugin>
+        </plugins>
+    </build>
+...
+
+See BACKLOG for upcoming features
+
+h3. LICENSE
+
+The maven-warbler-plugin is under the terms of the MIT License.
+
+    Warbler (c) 2007-08 Sun Microsystems, Inc.
+
+Warbler also bundles several other pieces of software for convenience. Please
+read the file LICENSES.txt to ensure that you agree with the terms of all the
+components.
+
